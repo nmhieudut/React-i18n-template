@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useTranslation } from "react-i18next";
+import i18n from "./translation/i18n";
 
 function App() {
+  const { t } = useTranslation();
+  const switchLanguage = lang => {
+    i18n.changeLanguage(lang);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="card p-2">
+        <div className="card-body">
+          <h5 class="card-title">{t("content.functional")}</h5>
+          <h5 class="card-title">{t("content.class")}</h5>
+          <h5 class="card-title">{t("content.text")}</h5>
+          <button onClick={() => switchLanguage("en")}>Change to EN </button>
+          <button onClick={() => switchLanguage("vi")}>Change to VI </button>
+        </div>
+      </div>
     </div>
   );
 }
